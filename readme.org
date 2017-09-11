@@ -1,0 +1,20 @@
+#+TITLE: Dungeons and Dragons Commandline
+#+AUTHOR: Benjamin Zaporzan
+#+DATE: 2017-09-11
+#+EMAIL: benzaporzan@gmail.com
+#+LANGUAGE: en
+#+OPTIONS: H:2 num:t toc:t \n:nil ::t |:t ^:t f:t tex:t
+
+A dungeons and dragons commandline application for managing campaigns.
+
+* Development
+  development was done in python 3.6.2
+
+  while in the main project directory
+  
+  #+BEGIN_SRC sh
+  pip install virtualenv
+  virtualenv venv
+  python venv/Scripts/activate_this.py
+  pip install -e .
+  #+END_SRC

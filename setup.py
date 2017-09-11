@@ -10,11 +10,20 @@ setup(name='dndc',
       author_email='benzaporzan@gmail.com',
       url='https://github.com/benzap/dndc',
       packages=['dndc', 'tests'],
-      requires=['docopt'],
       entry_points={
           'console_scripts': ['dndc = dndc.__main__:main']
       },
       test_suite='nose.collector',
-      install_requires=['nose'],
+      install_requires=[
+          'nose',
+          'docopt',
+          'funcy',
+          'pygments',
+          'pypiwin32',
+          'kivy.deps.sdl2',
+          'kivy.deps.glew',
+          #'kivy.deps.gstreamer',
+          'kivy',
+      ],
       tests_require=['nose'],
      )
