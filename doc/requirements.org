@@ -1,0 +1,29 @@
+#+TITLE: Requirements
+#+AUTHOR: Benjamin Zaporzan
+#+DATE: 2017-09-12
+#+EMAIL: benzaporzan@gmail.com
+#+LANGUAGE: en
+#+OPTIONS: H:2 num:t toc:t \n:nil ::t |:t ^:t f:t tex:t
+
+* Features
+  - Should be able to create a world, which represents the sessions
+    - A world is just a system for storing the characters, and the
+      enemies they might encounter, along with campaigns.
+    - Later on, store information on cities, and markets in the area.
+
+  - Should be able to assign a dnd session to a campaign.
+    - Campaigns are created, modified and archived
+    - Campaigns include created characters
+
+  - Characters are created within the world.
+    - Characters are created, edited and archived
+    - Characters have their listed attributes
+
+  - The main feature is the ability to carry out checks and encounter
+    die rolls quickly without having to refer to each character or
+    created enemies attributes all of the time.
+
+  - Create die rolling system to quickly work out values.
+
+  - Have an encyclopedia of search terms to find items, monsters,
+    and locations of interest
