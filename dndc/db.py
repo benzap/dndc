@@ -6,30 +6,40 @@ import sqlite3 as sqlite
 
 class SQLiteDatabase:
     def __init__(self, file_path):
-        self.file_path = file_path
-        self.bconnected = False
+        self.file_path: str = file_path
+        self.bconnected: bool = False
         self.connection = None
         self.cursor = None
 
     def connect(self):
-        self.connection = sqlite.connect(file_path)
+        if self.connection is not None:
+            self.connection.close()
+        self.connection = sqlite.connect(self.file_path)
         self.bconnected = True
+        return self
         
     def close(self):
-        self.connection.close()
+        if self.connection is not None:
+            self.connection.close()
+            self.connection = None
         self.bconnected = False
+        return self
 
     def __enter__(self):
-        self.cursor = self.connection.cursor()
+        if self.connection is not None and self.bconnected:
+            self.cursor = self.connection.cursor()
+        else:
+            raise Exception("No connection has been made to the server")
+        
         return self.cursor
 
     def __exit__(self, etype, evalue, etraceback):
         if isinstance(evalue, Exception):
-            self.cursor.rollback()
+            self.connection.rollback()
             self.cursor = None
             raise evalue
         else:
-            self.cursor.commit()
+            self.connection.commit()
             self.cursor = None
             return True
 
