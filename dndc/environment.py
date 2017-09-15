@@ -7,7 +7,7 @@ import dndc.db as db
 
 
 ENV_CONFIG = "DNDC_CONFIG_DIRECTORY"
-DEFAULT_CONFIG_DIRECTORY = path.expanduser("~/.dndc/config")
+DEFAULT_CONFIG_DIRECTORY = path.expanduser(path.join("~" ".dndc" "config"))
 def get_config_directory():
     if ENV_CONFIG in os.environ:
         return os.environ[ENV_CONFIG]
@@ -16,7 +16,7 @@ def get_config_directory():
 
 
 ENV_DATA = "DNDC_DATA_DIRECTORY"
-DEFAULT_DATA_DIRECTORY = path.expanduser("~/.dndc/data")
+DEFAULT_DATA_DIRECTORY = path.expanduser(path.join("~", ".dndc", "data"))
 def get_data_directory():
     if ENV_DATA in os.environ:
         return os.environ[ENV_DATA]
@@ -35,4 +35,8 @@ def get_database_path():
 
 
 def get_db():
-    return db.SQLiteDatabase(get_database_path())
+    database_path = get_database_path()
+    if not path.isdir(path.dirname(database_path)):
+        os.makedirs(path.dirname(database_path))
+
+    return db.SQLiteDatabase(get_database_path()).connect()

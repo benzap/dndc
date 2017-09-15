@@ -1,5 +1,7 @@
 ''' A character in DnD
 '''
+import os
+
 
 class Trait:
     """Characters carry traits, which affect their skills
@@ -24,3 +26,4 @@ class Ability:
 class Character:
     def __init__(**kwargs):
         self.name = kwargs.get("name", "Jeff")
+        
