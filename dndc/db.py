@@ -44,7 +44,7 @@ class Cursor:
         row = self.cursor.fetchone()
         return generate_rowmap(self.cursor, row)
 
-    def query_id(self, s, *args, **kwargs):
+    def execute_id(self, s, *args, **kwargs):
         execute_cursor(self.cursor, s, *args, **kwargs)
         return self.cursor.lastrowid
 
@@ -104,6 +104,22 @@ class SQLiteDatabase:
         with self as cursor:
             result = cursor.query("SELECT name FROM sqlite_master WHERE type='table'")
             return [row["name"] for row in result]
+
+    def execute(self, s, *args, **kwargs):
+        with self as cursor:
+            return cursor.execute(s, *args, **kwargs)
+
+    def execute_id(self, s, *args, **kwargs):
+        with self as cursor:
+            return cursor.execute_id(s, *args, **kwargs)
+
+    def query(self, s, *args, **kwargs):
+        with self as cursor:
+            return cursor.query(s, *args, **kwargs)
+        
+    def query_one(self, s, *args, **kwargs):
+        with self as cursor:
+            return cursor.query_one(s, *args, **kwargs)
 
 
 if __name__ ==  "__main__":

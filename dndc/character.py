@@ -1,7 +1,7 @@
 ''' A character in DnD
 '''
 import os
-
+from data import _R
 
 class Trait:
     """Characters carry traits, which affect their skills

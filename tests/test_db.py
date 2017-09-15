@@ -78,7 +78,7 @@ class TestCase_Database(unittest.TestCase):
             self.assertEqual("test1", test_value["name"])
 
         with self.database as cursor:
-            returned_id = cursor.query_id("INSERT INTO test (name) VALUES ('test2')")
+            returned_id = cursor.execute_id("INSERT INTO test (name) VALUES ('test2')")
             self.assertTrue(isinstance(returned_id, int))
             self.assertTrue(returned_id > 0)
 
