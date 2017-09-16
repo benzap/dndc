@@ -121,12 +121,11 @@ class SQLiteDatabase:
         with self as cursor:
             return cursor.query_one(s, *args, **kwargs)
 
-
-if __name__ ==  "__main__":
+def main():
     import sys
     argv = sys.argv[1:]
     if len(argv) < 1:
-        print("dndc.db <query> [args...]")
+        print("dndc-db <query> [args...]")
         sys.exit(0)
 
     from dndc.environment import get_db
@@ -135,4 +134,7 @@ if __name__ ==  "__main__":
     with database as cursor:
         rows = list(cursor.query(argv[0], *argv[1:]))
         pprint(rows)
-        sys.exit(0)
+        sys.exit(0)    
+
+if __name__ ==  "__main__":
+    main()
