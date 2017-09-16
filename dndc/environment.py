@@ -40,3 +40,12 @@ def get_db():
         os.makedirs(path.dirname(database_path))
 
     return db.SQLiteDatabase(get_database_path()).connect()
+
+
+def touch(file_path):
+    with open(file_path, "a"):
+        pass
+
+def clear(file_path):
+    with open(file_path, "w"):
+        pass

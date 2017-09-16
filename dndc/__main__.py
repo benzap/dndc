@@ -4,6 +4,9 @@ import sys
 
 import dndc.db as db
 from dndc.resource import Resource
+import dndc.repl as repl
+
+
 _R = Resource()
 
 
@@ -14,6 +17,7 @@ def main(args=None):
     print("Starting app")
     print(_R.get_filepath("language.english"))
     print(_R.get("language.english"))
+    repl.start()
 
 
 if __name__ == "__main__":
