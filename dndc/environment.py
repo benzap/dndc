@@ -43,9 +43,19 @@ def get_db():
 
 
 def touch(file_path):
+    try:
+        os.makedirs(path.dirname(file_path))
+    except:
+        pass
+
     with open(file_path, "a"):
         pass
 
 def clear(file_path):
+    try:
+        os.makedirs(path.dirname(file_path))
+    except:
+        pass
+
     with open(file_path, "w"):
         pass
